@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Porsche Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo">
+            <h1>PORSCHE</h1>
+        </div>
+        <div class="header-title" style="display: flex; align-items: center;">
+            <h2>Sales Dashboard</h2>
+            <button id="theme-toggle" class="theme-toggle-btn" aria-label="Alternar Tema">
+                <span id="theme-icon">🌙</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="dashboard-container">
+        <!-- Main content area -->
+        <section class="content">
+            <!-- Top Filters -->
+            <div class="top-filters">
+                <div class="filter-group">
+                    <label for="filter-model">Porsche Model</label>
+                    <select id="filter-model">
+                        <option value="">Todos</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="filter-top-models">Qtd. Modelos</label>
+                    <select id="filter-top-models">
+                        <option value="5">Top 5</option>
+                        <option value="3">Top 3</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="filter-year">Model Year</label>
+                    <select id="filter-year">
+                        <option value="">Todos</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="filter-city">City</label>
+                    <select id="filter-city">
+                        <option value="">Todas</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="filter-pay">Pay Method</label>
+                    <select id="filter-pay">
+                        <option value="">Todos</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="filter-period-start">Período Inicial</label>
+                    <input type="date" id="filter-period-start">
+                </div>
+                
+                <div class="filter-group">
+                    <label for="filter-period-end">Período Final</label>
+                    <input type="date" id="filter-period-end">
+                </div>
+
+                <div class="filter-actions">
+                    <button id="btn-apply-filters" class="btn-primary">Aplicar</button>
+                    <button id="btn-clear-filters" class="btn-secondary">Limpar</button>
+                </div>
+            </div>
+
+            <!-- KPI Cards -->
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <h4>Total de Vendas</h4>
+                    <p id="kpi-total-sales">$ 0.00</p>
+                    <span class="kpi-desc">Receita bruta baseada nos filtros aplicados</span>
+                </div>
+                <div class="kpi-card">
+                    <h4>Unidades Vendidas</h4>
+                    <p id="kpi-total-units">0</p>
+                    <span class="kpi-desc">Volume total de carros comercializados</span>
+                </div>
+                <div class="kpi-card">
+                    <h4>Modelo Mais Vendido</h4>
+                    <p id="kpi-top-model">-</p>
+                    <span class="kpi-desc">O veículo de maior sucesso e aderência</span>
+                </div>
+            </div>
+
+            <!-- Charts -->
+            <div class="charts-container">
+                <div class="chart-card">
+                    <h3>Principais modelos de carro por cidade</h3>
+                    <p class="chart-desc">Compara o volume e a distribuição dos modelos favoritos nas 5 praças de maior faturamento.</p>
+                    <div class="canvas-container">
+                        <canvas id="chart-models-city"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <h3>Ano de modelo mais vendido</h3>
+                    <p class="chart-desc">Avalia a tendência cronológica de demanda para entender se o público prefere modelos recentes ou consolidados.</p>
+                    <div class="canvas-container">
+                        <canvas id="chart-year-period"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card" style="grid-column: 1 / -1;">
+                    <h3>Evolução de Receita por Estado</h3>
+                    <p class="chart-desc">Acompanha a trajetória de faturamento ao longo do tempo nos 5 principais estados (Agrupado por mês).</p>
+                    <div class="canvas-container">
+                        <canvas id="chart-evolution-state"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Insights Area -->
+            <div class="insights-container">
+                <h3>Insights de Vendas por Cidade</h3>
+                <div id="insights-list" class="insights-list">
+                    <!-- Inserted via JS -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Load Data and Chart.js -->
+    <script src="assets/js/dashboard_data.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+
+</html>
