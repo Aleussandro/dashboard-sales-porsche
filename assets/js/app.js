@@ -49,10 +49,15 @@ function setupThemeToggle() {
             Chart.defaults.color = '#E0E0E0';
         }
 
+        const newGridColor = currentTheme === 'dark' ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.1)';
+        
         // Update grid line colors dynamically
-        if (chartYearPeriod) {
-            chartYearPeriod.options.scales.y.grid.color = currentTheme === 'dark' ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.1)';
-        }
+        [chartModelsCity, chartYearPeriod, chartEvolutionState].forEach(chart => {
+            if (chart) {
+                if (chart.options.scales.x) chart.options.scales.x.grid.color = newGridColor;
+                if (chart.options.scales.y) chart.options.scales.y.grid.color = newGridColor;
+            }
+        });
 
         // Force chart update to reflect new colors
         if (chartModelsCity) chartModelsCity.update();
@@ -266,8 +271,7 @@ function renderChartModelsCity() {
             },
             plugins: {
                 legend: {
-                    position: 'bottom',
-                    labels: { color: '#e4e4e7' }
+                    position: 'bottom'
                 },
                 datalabels: {
                     display: true,
@@ -283,15 +287,10 @@ function renderChartModelsCity() {
                 x: {
                     stacked: false, // Grouped instead of stacked
                     suggestedMax: 5, // Prevent axis locking at 1 unit
-                    ticks: {
-                        color: '#e4e4e7',
-                        stepSize: 1
-                    },
-                    grid: { color: 'rgba(255,255,255,0.05)' }
+                    grid: { color: document.documentElement.getAttribute('data-theme') === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)' }
                 },
                 y: {
                     stacked: false, // Grouped instead of stacked
-                    ticks: { color: '#e4e4e7' },
                     grid: { display: false }
                 }
             }
@@ -338,6 +337,11 @@ function renderChartYearPeriod() {
                 datalabels: { display: false }
             },
             scales: {
+                x: {
+                    grid: {
+                        color: document.documentElement.getAttribute('data-theme') === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'
+                    }
+                },
                 y: {
                     beginAtZero: true,
                     grid: {
@@ -428,8 +432,7 @@ function renderChartEvolutionState() {
             },
             plugins: {
                 legend: {
-                    position: 'bottom',
-                    labels: { color: '#e4e4e7' }
+                    position: 'bottom'
                 },
                 tooltip: {
                     callbacks: {
@@ -449,17 +452,15 @@ function renderChartEvolutionState() {
             },
             scales: {
                 x: {
-                    ticks: { color: '#e4e4e7' },
-                    grid: { color: 'rgba(255,255,255,0.05)' }
+                    grid: { color: document.documentElement.getAttribute('data-theme') === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)' }
                 },
                 y: {
                     ticks: { 
-                        color: '#e4e4e7',
                         callback: function(value) {
                             return '$' + (value / 1000) + 'k';
                         }
                     },
-                    grid: { color: 'rgba(255,255,255,0.05)' }
+                    grid: { color: document.documentElement.getAttribute('data-theme') === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)' }
                 }
             }
         }
