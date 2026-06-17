@@ -6,13 +6,13 @@ Esse projeto é resultado do curso Aceleração: AI Reports com Excel, GPT Agent
 
 ## Descrição
 
-Esse projeto é um dashboard interativo criado utilizando HTML, CSS, JavaScript, Python e a ferramenta **Antigravity AI**, que utiliza inteligência artificial para auxiliar na criação de dashboards. A proposta do curso é pegar uma base de dados no Excel e tratar ela para que possamos ter uma melhor visualização e entendimento dos dados e conseguir transforma-los em gráficos e tabelas interativas.
+Esse projeto consiste em um dashboard interativo desenvolvido com HTML, CSS, JavaScript, Python e a ferramenta Antigravity AI. O objetivo principal é realizar o tratamento de uma base de dados bruta em Excel, transformando-a em gráficos e tabelas dinâmicas. Essa estrutura permite uma melhor visualização e compreensão das informações de negócios.
 
 _Eu utilizei o **Antigravity IDE** para me auxiliar no desenvolvimento do projeto utilizando o **Claude Opus 4.6** e por possuir apenas a versão Pro do Gemini optei por utilizar o **Gemini 3.1 Pro** quando excedia os tokens do Claude._
 
 ![screenshot light mode 1](/material/Screenshot_light_1.png)
 ![screenshot light mode 2](/material/Screenshot_light_2.png)
-_Screenshot da Dashboard no com tema claro._
+_Screenshot da Dashboard com tema claro._
 
 ![screenshot dark mode 1](/material/Screenshot_dark_1.png)
 ![screenshot dark mode 2](/material/Screenshot_dark_2.png)
